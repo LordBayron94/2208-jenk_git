@@ -1,3 +1,4 @@
+properties([pipelineTriggers([cron('* * * * *')])])
 pipeline {
     agent any
 
@@ -5,6 +6,11 @@ pipeline {
         stage('Hello') {
             steps {
                 git 'https://github.com/LordBayron94/2208-jenk_git.git'
+                bat 'python test.py'
+            }
+        }
+        stage('Bye') {
+            steps {
                 bat 'python test.py'
             }
         }
